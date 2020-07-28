@@ -23,32 +23,38 @@ let _nextSSD = 0;
 */
 
 let createDevices = (deviceType) => {
-    // new video device
-    if (deviceType == 'video') {
-        // And if validateForm equals true for the video
-        if (validateForm('video')) {
-            // targeting the DOM elements
-            let supplier = document.getElementById('videoSupplierName').value;
-            let serialNumber = document.getElementById('videoSerialNumber').value;
-            let replacementCost = document.getElementById('videoRepCost').value;
-            let resolution = document.getElementById('videoResolution');
-            let selectedRes = resolution.options[resolution.selectedIndex].value;
-            let type = document.getElementById('videoType');
-            let selectedType = type.options[type.selectedIndex].value;
-            let disable = document.getElementById('videoDisable').checked;
+        // new video device
+        if (deviceType == 'video') {
+            // And if validateForm equals true for the video
+            if (validateForm('video')) {
+                // targeting the DOM elements
+                let supplier = document.getElementById('videoSupplierName').value;
+                let serialNumber = document.getElementById('videoSerialNumber').value;
+                let replacementCost = document.getElementById('videoRepCost').value;
+                let resolution = document.getElementById('videoResolution');
+                let selectedRes = resolution.options[resolution.selectedIndex].value;
+                let type = document.getElementById('videoType');
+                let selectedType = type.options[type.selectedIndex].value;
+                let disable = document.getElementById('videoDisable').checked;
 
-            // validation for the disable checkbox whether it's been checked
-            if (disable === true) {
-                disable = 0;
-            } else {
-                disable = 1;
+                // validation for the disable checkbox whether it's been checked
+                if (disable === true) {
+                    disable = 0;
+                } else {
+                    disable = 1;
+                }
+
+                // Pushes the data into the object Class Constructor created array
+                let videoDevice = _videos.push(new VideoDevice(parseInt(replacementCost), supplier, serialNumber, disable, selectedRes, selectedType));
+                window.alert('Video device created succesfully!');
+
+                clearDeviceInput('video'); // Clear inputs accordingly 
+
+                document.getElementById('videoSupplierName').focus(); // Directs Focus to the first field
+
+                console.table(_videos); // Console the array to see the values
+
             }
-
-
-
-
-
-
         }
 
 
@@ -56,6 +62,23 @@ let createDevices = (deviceType) => {
 
 
 
-    }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    } // End of the function createDevices() closing bracket
