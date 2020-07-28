@@ -119,6 +119,7 @@ let validateForm = (form) => {
 
 
 let clearDeviceInput = (deviceType) => {
+
         if (deviceType == "video") {
             document.getElementById('videoSupplierName').value = "";
             document.getElementById('videoSerialNumber').value = "";
@@ -211,4 +212,4 @@ let fillInputs = (device, array, index) => {
                 document.getElementById('ssdDisable').checked = true;
             }
         }
-    } //End of fillInputs()
+    } // End of fillInputs()
