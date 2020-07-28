@@ -52,10 +52,49 @@ let createDevices = (deviceType) => {
 
                 document.getElementById('videoSupplierName').focus(); // Directs Focus to the first field
 
+                /* console. table() allows to display data in the console in a nice tabular format. 
+                It comes in very handy when having to visualize complex arrays or objects */
                 console.table(_videos); // Console the array to see the values
 
             }
         }
+
+
+        // new hard disk device
+        else if (deviceType == 'hardDisk') {
+            if (validateForm('hardDisk')) {
+                let supplier = document.getElementById('hdSupplierName').value;
+                let serialNumber = document.getElementById('hdSerialNumber').value;
+                let replacementCost = document.getElementById('hdRepCost').value;
+                let size = document.getElementById('hdSize');
+                let selectedSize = size.options[size.selectedIndex].value;
+                let transferRate = document.getElementById('hdTransferRate').value;
+                let platterSize = document.getElementById('hdPlatterSize');
+                let selectedPlatterSize = platterSize.options[platterSize.selectedIndex].value;
+                let numberPlatters = document.getElementById('hdNumberPlatters').value;
+                let disable = document.getElementById('hdDisable').checked;
+
+                if (disable === true) {
+                    disable = 0;
+                } else {
+                    disable = 1;
+                }
+
+                //Push the data into the object array 
+                let hardDiskDevice = _hardDisks.push(new HardDisk(parseInt(replacementCost), supplier, serialNumber, disable, selectedSize, transferRate, selectedPlatterSize, numberPlatters));
+
+                clearDeviceInput('hardDisk'); // Clear inputs
+
+                document.getElementById('hdSupplierName').focus(); // Focus to the first field again
+
+                console.table(_hardDisks); // Console the array
+            }
+        }
+
+
+
+
+
 
 
 
