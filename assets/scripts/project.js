@@ -126,3 +126,108 @@ let createDevices = (deviceType) => {
 
 
     } // End of the function createDevices() closing bracket
+
+
+
+
+
+/*
+  NAVBUTTONS()
+  This function receives the device and button description as parameters and fills the inputs using fillInputs()
+*/
+
+
+let navButtons = (device, btn) => {
+        //Video buttons
+        if (device == 'video') {
+            if (btn == "next") {
+                if (_nextVideo == 0) { // This IF statement is responsible for showing the first array element
+                    fillInputs(device, _videos, _actualVideo);
+                    _nextVideo++;
+                } else {
+                    _actualVideo++; // Update the index befor filling the inputs
+                    fillInputs(device, _videos, _actualVideo);
+                    _nextVideo++;
+                    document.getElementById("previousVideo").disabled = false; // Enables the previous button
+                    if (_nextVideo == _videos.length) { // Disable the next button if last array element
+                        document.getElementById("nextVideo").disabled = true;
+                    }
+                }
+            } else if (btn == "prev") {
+                if (_actualVideo == 0) {
+                    fillInputs(device, _videos, _actualVideo);
+                    _nextVideo--;
+                } else {
+                    _actualVideo--;
+                    fillInputs(device, _videos, _actualVideo);
+                    _nextVideo--;
+                    document.getElementById("nextVideo").disabled = false;
+                    if (_actualVideo == 0) {
+                        document.getElementById("previousVideo").disabled = true; //Disables the previous button
+                    }
+                }
+            }
+        }
+
+        //Hard Disk buttons
+        if (device == 'hardDisk') {
+            if (btn == "next") {
+                if (_nextHardDisk == 0) { //This IF statement is responsible for showing the first array element
+                    fillInputs(device, _hardDisks, _actualHardDisk);
+                    _nextHardDisk++;
+                } else {
+                    _actualHardDisk++; //Update de index befor filling the inputs
+                    fillInputs(device, _hardDisks, _actualHardDisk);
+                    _nextHardDisk++;
+                    document.getElementById("previousHd").disabled = false; //Enables the previous button
+                    if (_nextHardDisk == _hardDisks.length) { //Disable the next button if last array element
+                        document.getElementById("nextHd").disabled = true;
+                    }
+                }
+            } else if (btn == "prev") {
+                if (_actualHardDisk == 0) {
+                    fillInputs(device, _hardDisks, _actualHardDisk);
+                    _nextHardDisk--;
+                } else {
+                    _actualHardDisk--;
+                    fillInputs(device, _hardDisks, _actualHardDisk);
+                    _nextHardDisk--;
+                    document.getElementById("nextHd").disabled = false;
+                    if (_actualHardDisk == 0) {
+                        document.getElementById("previousHd").disabled = true; //Disables the previous button
+                    }
+                }
+            }
+        }
+
+        //SSD buttons
+        if (device == 'ssd') {
+            if (btn == "next") {
+                if (_nextSSD == 0) { //This IF statement is responsible for showing the first array element
+                    fillInputs(device, _ssds, _actualSSD);
+                    _nextSSD++;
+                } else {
+                    _actualSSD++; //Update de index befor filling the inputs
+                    fillInputs(device, _ssds, _actualSSD);
+                    _nextSSD++;
+                    document.getElementById("previousSSD").disabled = false; //Enables the previous button
+                    if (_nextSSD == _ssds.length) { //Disable the next button if last array element
+                        document.getElementById("nextSSD").disabled = true;
+                    }
+                }
+            } else if (btn == "prev") {
+                if (_actualSSD == 0) {
+                    fillInputs(device, _ssds, _actualSSD);
+                    _nextSSD--;
+                } else {
+                    _actualSSD--;
+                    fillInputs(device, _ssds, _actualSSD);
+                    _nextSSD--;
+                    document.getElementById("nextSSD").disabled = false;
+                    if (_actualSSD == 0) {
+                        document.getElementById("previousSSD").disabled = true; //Disables the previous button
+                    }
+                }
+            }
+        }
+    } // final closing bracket of the function
