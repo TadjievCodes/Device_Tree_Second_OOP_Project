@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- 
+  Author:     Tadjiev Mukhammadkhon Student# 0971040
+  Date:       July 30, 2020
+  Purpose:    Project #2 of OOP for Web Development IWD 
+ -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project 2 - Tadjiev Mukhammadkhon</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script src="assets/scripts/projectClasses.js"></script>
+    <script src="assets/scripts/project.js"></script>
+    <script src="assets/scripts/generalFunctions.js"></script>
+
+
+
+</head>
+
+<body onload="populateDevices();">
+    <nav class="nav_tabs">
+        <ul>
+            <li>
+                <!-- VIDEO DEVICES -->
+                <input type="radio" name="tabs" class="rd_tabs" id="tab1" checked>
+                <label for="tab1">Video Devices</label>
+                <div class="content">
+                    <p class="disable">Disable device <input type="checkbox" id="videoDisable"></p>
+                    <p><input type="text" placeholder="Supplier Name" id="videoSupplierName"></p>
+                    <p><input type="text" placeholder="Serial Number" id="videoSerialNumber"></p>
+                    <p><input type="number" min="0.00" max="10000.00" placeholder="Replecement Cost" id="videoRepCost"></p>
+                    <p>
+                        <select id="videoResolution">
+              <option value="" hidden>Resolution</option>
+              <option value="hd">1280 x 720 - HD</option>
+              <option value="fullhd">1920 x 1080 - Full HD</option>
+              <option value="4k">3840 x 2160 - 4K</option>
+            </select>
+                    </p>
+                    <p>
+                        <select id="videoType">
+              <option value="" hidden>Type</option>
+              <option value="CRT">CRT</option>
+              <option value="LCD">LCD</option>
+              <option value="LED">LED</option>
+            </select>
+                    </p>
+                    <input type="button" value="<<" id="previousVideo" disabled="true" onclick="navButtons('video', 'prev')">
+                    <input type="button" value=">>" id="nextVideo" onclick="navButtons('video', 'next')">
+                    <input type="button" value="New" onclick="clearDeviceInput('video')">
+                    <input type="button" value="Save" onclick="createDevices('video')">
+                    <input type="button" value="Update" onclick="updateDevice('video')">
+                </div>
+            </li>
+            <li>
+
+                <!-- HARD DISK DEVICES -->
+                <input type="radio" name="tabs" class="rd_tabs" id="tab2">
+                <label for="tab2">Hard Disk Devices</label>
+                <div class="content">
+                    <p class="disable">Disable device <input type="checkbox" id="hdDisable"></p>
+                    <p><input type="text" placeholder="Supplier Name" id="hdSupplierName"></p>
+                    <p><input type="text" placeholder="Serial Number" id="hdSerialNumber"></p>
+                    <p><input type="number" min="0.00" max="10000.00" placeholder="Replecement Cost" id="hdRepCost"></p>
+                    <p>
+                        <select id="hdSize">
+              <option value="" hidden>Size</option>
+              <option value="250 GB">250 GB</option>
+              <option value="500 GB">500 GB</option>
+              <option value="1 TB">1 TB</option>
+              <option value="2 TB">2 TB</option>
+            </select>
+                    </p>
+                    <p><input type="text" placeholder="Transfer Rate" id="hdTransferRate"></p>
+                    <p>
+                        <select id="hdPlatterSize">
+              <option value="" hidden>Platter Size</option>
+              <option value="25inch">2.5-inch</option>
+              <option value="35inch">3.5-inch</option>
+            </select>
+                    </p>
+                    <p><input type="number" placeholder="Number of Platters" id="hdNumberPlatters"></p>
+                    <input type="button" value="<<" id="previousHd" disabled="true" onclick="navButtons('hardDisk', 'prev')">
+                    <input type="button" value=">>" id="nextHd" onclick="navButtons('hardDisk', 'next')">
+                    <input type="button" value="New" onclick="clearDeviceInput('hardDisk')">
+                    <input type="button" value="Save" onclick="createDevices('hardDisk')">
+                    <input type="button" value="Update" onclick="updateDevice('hardDisk')">
+                </div>
+            </li>
+            <li>
+
+                <!-- SSD DEVICES -->
+                <input type="radio" name="tabs" class="rd_tabs" id="tab3">
+                <label for="tab3">Solid State Devices</label>
+                <div class="content">
+                    <p class="disable">Disable device <input type="checkbox" id="ssdDisable"></p>
+                    <p><input type="text" placeholder="Supplier Name" id="ssdSupplierName"></p>
+                    <p><input type="text" placeholder="Serial Number" id="ssdSerialNumber"></p>
+                    <p><input type="number" min="0.00" max="10000.00" placeholder="Replecement Cost" id="ssdRepCost"></p>
+                    <p>
+                        <select id="ssdSize">
+              <option value="" hidden>Size</option>
+              <option value="250 GB">250 GB</option>
+              <option value="500 GB">500 GB</option>
+              <option value="1 TB">1 TB</option>
+            </select>
+                    </p>
+                    <p><input type="text" placeholder="Transfer Rate" id="ssdTransferRate"></p>
+                    <p>
+                        <select id="ssdType">
+              <option value="" hidden>Type</option>
+              <option value="SATA">SATA</option>
+              <option value="PCIe">PCIe</option>
+              <option value="M.2">M.2</option>
+              <option value="mSATA">mSATA</option>
+            </select>
+                    </p>
+                    <p><input type="number" placeholder="Wear Leveling" id="ssdWearLeveling"></p>
+                    <input type="button" value="<<" id="previousSSD" disabled="true" onclick="navButtons('ssd', 'prev')">
+                    <input type="button" value=">>" id="nextSSD" onclick="navButtons('ssd', 'next')">
+                    <input type="button" value="New" onclick="clearDeviceInput('ssd')">
+                    <input type="button" value="Save" onclick="createDevices('ssd')">
+                    <input type="button" value="Update" onclick="updateDevice('ssd')">
+                </div>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
