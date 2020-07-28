@@ -93,31 +93,36 @@ let createDevices = (deviceType) => {
 
 
 
+        // new ssd device
+        else if (deviceType == 'ssd') {
+            if (validateForm('ssd')) {
+                let supplier = document.getElementById('ssdSupplierName').value;
+                let serialNumber = document.getElementById('ssdSerialNumber').value;
+                let replacementCost = document.getElementById('ssdRepCost').value;
+                let size = document.getElementById('ssdSize');
+                let selectedSize = size.options[size.selectedIndex].value;
+                let transferRate = document.getElementById('ssdTransferRate').value;
+                let type = document.getElementById('ssdType');
+                let selectedType = type.options[type.selectedIndex].value;
+                let wearLeveling = document.getElementById('ssdWearLeveling').value;
+                let disable = document.getElementById('ssdDisable').checked;
 
+                if (disable === true) {
+                    disable = 0;
+                } else {
+                    disable = 1;
+                }
 
+                let hardDiskDevice = _ssds.push(new SSD(parseInt(replacementCost), supplier, serialNumber, disable, selectedSize, transferRate, selectedType, wearLeveling)); //Push the data into the object array
+                window.alert("SSD device created succesfully!");
 
+                clearDeviceInput('ssd'); //Clear inputs
 
+                document.getElementById('ssdSupplierName').focus(); //Focus to the first field
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                console.table(_ssds); //Console the array
+            }
+        }
 
 
     } // End of the function createDevices() closing bracket
