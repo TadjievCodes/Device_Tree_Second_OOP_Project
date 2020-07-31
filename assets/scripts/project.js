@@ -145,7 +145,7 @@ let navButtons = (device, btn) => {
                     fillInputs(device, _videos, _actualVideo);
                     _nextVideo++;
                 } else {
-                    _actualVideo++; // Update the index befor filling the inputs
+                    _actualVideo++; // Update the index before filling the inputs
                     fillInputs(device, _videos, _actualVideo);
                     _nextVideo++;
                     document.getElementById("previousVideo").disabled = false; // Enables the previous button

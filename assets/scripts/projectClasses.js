@@ -1,6 +1,7 @@
 //===========================================
 //  CLASSES
 //===========================================
+
 class Device {
     constructor(replacementCost, supplierName, serialNumber, status) {
         this._replacementCost = replacementCost;
