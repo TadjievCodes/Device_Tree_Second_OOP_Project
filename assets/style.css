@@ -98,3 +98,20 @@ input[type="button"] {
     transition-duration: .5s;
     transition-delay: .2s, .3s, 0s;
 }
+
+input[type="button"]:hover {
+    background-color: #DBE300;
+    color: white;
+    /*
+    transition-duration: 0.4s, 0.3s, 0.2s;
+    transition-property: background, border-radius, color;
+    */
+    box-shadow: 3px rgba (255, 255, 255.7);
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
+}
