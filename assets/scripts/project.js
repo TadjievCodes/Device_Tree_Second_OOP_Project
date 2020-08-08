@@ -131,6 +131,118 @@ let createDevices = (deviceType) => {
 
 
 
+
+
+
+
+/*
+  UPDATEDEVICE()
+  This functions receives the device type as parameter then gets the document element values and pushes it to the object array into the actual index
+*/
+let updateDevice = (deviceType) => {
+    //UPDATE VIDEO DEVICE
+    if (deviceType == 'video') {
+        if (validateForm('video')) {
+            let supplier = document.getElementById('videoSupplierName').value;
+            let serialNumber = document.getElementById('videoSerialNumber').value;
+            let replacementCost = document.getElementById('videoRepCost').value;
+            let resolution = document.getElementById('videoResolution');
+            let selectedRes = resolution.options[resolution.selectedIndex].value;
+            let type = document.getElementById('videoType');
+            let selectedType = type.options[type.selectedIndex].value;
+            let disable = document.getElementById('videoDisable').checked;
+            if (disable === true) {
+                disable = _videos[_actualVideo].disable();
+            } else {
+                disable = _videos[_actualVideo].enable();
+            }
+
+            _videos[_actualVideo] = new VideoDevice(parseInt(replacementCost), supplier, serialNumber, disable, selectedRes, selectedType); //Push the data into the object array
+            window.alert('Video device updated succesfully!');
+
+            clearDeviceInput('video'); //Clear inputs
+
+            document.getElementById('videoSupplierName').focus(); //Focus to the first field
+
+            console.table(_videos); //Console the array
+        }
+    }
+
+
+
+    // UPDATE HARD DISK DEVICE
+    else if (deviceType == 'hardDisk') {
+        if (validateForm('hardDisk')) {
+            let supplier = document.getElementById('hdSupplierName').value;
+            let serialNumber = document.getElementById('hdSerialNumber').value;
+            let replacementCost = document.getElementById('hdRepCost').value;
+            let size = document.getElementById('hdSize');
+            let selectedSize = size.options[size.selectedIndex].value;
+            let transferRate = document.getElementById('hdTransferRate').value;
+            let platterSize = document.getElementById('hdPlatterSize');
+            let selectedPlatterSize = platterSize.options[platterSize.selectedIndex].value;
+            let numberPlatters = document.getElementById('hdNumberPlatters').value;
+            let disable = document.getElementById('hdDisable').checked;
+            if (disable === true) {
+                disable = _hardDisks[_actualHardDisk].disable();
+            } else {
+                disable = _hardDisks[_actualHardDisk].enable();
+            }
+
+            _hardDisks[_actualHardDisk] = new HardDisk(parseInt(replacementCost), supplier, serialNumber, disable, selectedSize, transferRate, selectedPlatterSize, numberPlatters); //Push the data into the object array
+            window.alert("Hard Disk device updated succesfully!");
+
+            clearDeviceInput('hardDisk'); //Clear inputs
+
+            document.getElementById('hdSupplierName').focus(); //Focus to the first field
+
+            console.table(_hardDisks); //Console the array
+        }
+    }
+
+
+
+    // UPDATE SSD DEVICE
+    else if (deviceType == 'ssd') {
+        if (validateForm('ssd')) {
+            let supplier = document.getElementById('ssdSupplierName').value;
+            let serialNumber = document.getElementById('ssdSerialNumber').value;
+            let replacementCost = document.getElementById('ssdRepCost').value;
+            let size = document.getElementById('ssdSize');
+            let selectedSize = size.options[size.selectedIndex].value;
+            let transferRate = document.getElementById('ssdTransferRate').value;
+            let type = document.getElementById('ssdType');
+            let selectedType = type.options[type.selectedIndex].value;
+            let wearLeveling = document.getElementById('ssdWearLeveling').value;
+            let disable = document.getElementById('ssdDisable').checked;
+            if (disable === true) {
+                disable = _ssds[_actualSSD].disable();
+            } else {
+                disable = _ssds[_actualSSD].enable();
+            }
+
+            _ssds[_actualSSD] = new SSD(parseInt(replacementCost), supplier, serialNumber, disable, selectedSize, transferRate, selectedType, wearLeveling); //Push the data into the object array
+            window.alert("SSD device updated succesfully!");
+
+            clearDeviceInput('ssd'); //Clear inputs
+
+            document.getElementById('ssdSupplierName').focus(); //Focus to the first field
+
+            console.table(_ssds); //Console the array
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 /*
   NAVBUTTONS()
   This function receives the device and button description as parameters and fills the inputs using fillInputs()
